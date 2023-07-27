@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": { "title": "Miss", "first": "Barb", "last": "Scott" },
+      "location": {
+        "street": { "number": 3887, "name": "Rookery Road" },
+        "city": "Ennis",
+        "state": "Limerick",
+        "country": "Ireland",
+        "postcode": 40167,
+        "coordinates": { "latitude": "-0.9674", "longitude": "147.3335" },
+        "timezone": {
+          "offset": "+8:00",
+          "description": "Beijing, Perth, Singapore, Hong Kong"
+        }
+      },
+      "email": "barb.scott@example.com",
+      "login": {
+        "uuid": "2d3d6b68-564c-4b57-b8b6-e53ea65fd064",
+        "username": "happyswan429",
+        "password": "raiders",
+        "salt": "zpVTxE9I",
+        "md5": "e35ef53ff0384170e50b93acba6ad744",
+        "sha1": "28cae4467a8468a878ec346a1a8d668226525192",
+        "sha256": "51234106db8b2032f41cba08b5844774e463c9a41f752bfbbb4828f967ba8300"
+      },
+      "dob": { "date": "1956-03-08T06:20:44.901Z", "age": 67 },
+      "registered": { "date": "2019-11-24T17:31:41.094Z", "age": 3 },
+      "phone": "031-398-0324",
+      "cell": "081-298-4239",
+      "id": { "name": "PPS", "value": "4784631T" },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/64.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/64.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/64.jpg"
+      },
+      "nat": "IE"
+    }
+  ],
+  "info": {
+    "seed": "515eb0f7fbda4558",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
