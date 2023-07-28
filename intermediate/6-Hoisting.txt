@@ -1,0 +1,13 @@
+    Es un mecanismo de js donde las declaraciones de funciones, variables y clases 
+    son movidas antes del ambito, antes de su ejecucion. 
+    
+    Esto se hace ya que las declaraciones son asignadas en memoria durante la etapa 
+    de compilacion, pero quedan exactamente donde has escrito en el codigo. 
+
+
+miFuncion();
+
+function miFuncion(){
+    console.log("Hola mundo")
+}
+
