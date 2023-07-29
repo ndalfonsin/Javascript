@@ -1,0 +1,23 @@
+                                querySelector VS getElementById
+
+
+- El método querySelector le permite recuperar un elemento mediante una consulta de selector de CSS
+
+- El método getElementById recupera un elemento por su ID DOM.
+
+- Ambos métodos tienen una amplia compatibilidad con los navegadores. Debe optar por usar el método 
+querySelector si necesita seleccionar elementos usando reglas más complejas que se representan fácilmente
+usando un selector CSS. Si desea seleccionar un elemento por su ID, usar getElementById es una buena opción.
+
+- A menudo necesitará realizar selecciones más complejas en su HTML, y ahí es donde querySelector puede ser más útil;
+usarlo de manera constante también puede hacer que su código sea más fácil de leer para otros codificadores.
+
+- En otras palabras, el principal beneficio de usar querySelector o querySelectorAll es que podemos seleccionar 
+elementos usando selectores CSS, lo que nos da una forma uniforme de manejar la selección de elementos, y eso lo 
+convierte en una forma preferida de seleccionar elementos para muchos desarrolladores.
+
+- Si usa una herramienta como Babel para admitir navegadores más antiguos, entonces puede ser irrelevante, ya que 
+las funciones más nuevas se pueden convertir a código compatible con versiones anteriores cuando compila su script.
+
+- 800.000 selecciones por segundo, querySelector es aprox. 6% más lento.
+
