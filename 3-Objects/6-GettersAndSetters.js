@@ -37,3 +37,4 @@ console.log(gato.nombreMayuscula);
 // SET
 gato.nuevoEnemigo = "batman";
 console.log(gato.enemigos);
+
