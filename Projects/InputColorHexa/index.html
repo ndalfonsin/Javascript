@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Compatibilidad con navegadores viejos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive -->
+    <title>Seleccionar color</title>
+    <link crossorigin="anonymous" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"> <!-- Boostrap -->
+</head>
+
+<body>
+    <div class="container mt-5 text-center">
+        
+        <label class="form-label fs-4 font-weight-bold" for="inputColor">
+            Input color
+        </label>
+        
+        <div class="w-100 d-flex justify-content-center">
+            <input id="inputColor" class="form-control form-control-color mb-3 w-15 h-15 " title="Seleccione un color" type="color" value="#563d7c"> <!-- type="color" para definir que es de tipo color //value: para definir el valor inicial-->
+        </div>
+
+        <button id="boton" class="btn btn-primary w-25">Visualizar</button>
+    </div>
+    
+    <div class="container mt-5 w-25 h-25">
+        <p id="textoHexa" class="lead text-center">#563d7c</p>
+
+        <div id="cardColor" class="card text-center p-5" style="background-color: #563d7c;"></div>
+    </div>
+    
+    <script src="main.js" type="text/javascript" defer></script>
+</body>
+</html>
