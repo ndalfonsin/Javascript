@@ -9,4 +9,6 @@ boton.addEventListener("click", () => {
     console.log(inputColor.value);
     textoHexa.textContent = inputColor.value;
     cardColor.style.backgroundColor = inputColor.value
+    navigator.clipboard.writeText(inputColor.value).then(() => alert("texto copiado")).catch((e) => console.log(e))
 })
+
