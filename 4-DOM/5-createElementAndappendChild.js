@@ -58,3 +58,4 @@ el.innerHTML = name; // fíjese que el texto es molesto y no es realmente lo que
 
 /* Por esa razón, cuando solo tratamos con texto, es recomendable no usar innerHTML, sino Node.textContent, 
 que no interpretará la cadena pasada como HTML, sino como texto plano. */
+
