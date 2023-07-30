@@ -25,3 +25,11 @@ arrayElementos.forEach((pais) => {
 })
 
 listaDinamica.appendChild(fragment);
+
+arrayElementos.forEach((pais) => {
+    const newNode = document.createElement("li");
+    newNode.textContent = pais;
+})
+const referenceNode = fragment.firstChild;
+console.log("primer newNode", referenceNode);
+fragment.insertBefore(newNode, referenceNode);
