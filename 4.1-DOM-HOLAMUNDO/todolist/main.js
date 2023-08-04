@@ -1,4 +1,3 @@
-
 // window.onload = () => {
 //     const form = document.getElementById('todo-form'); //referencia al form
 //     form.onsubmit = (e) => { //reemplazamos la funcion en onsubmit
@@ -17,8 +16,9 @@
 // }
 
 //simplificacion con .map
-const todos = localStorage.getItem('todos') || [];
+const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
+//Renderizado de los todos
 render = () => {
     const todoList = document.getElementById('todo-list');
     const todosTemplate = todos.map(t => '<li>' + t + '</li>'); //itera por la cantidad de elementos que tiene
@@ -35,14 +35,21 @@ render = () => {
         elemento.addEventListener('click', () => {
             elemento.parentNode.removeChild(elemento);
             todos.splice(indice, 1);
-            render()
+            actualizaTodos(todos);
+            render();
         })
     })
 }
 
+//Actualizar todos en la localStorage
+const actualizaTodos = (todos) => {
+    const todoStrings = JSON.stringify(todos);
+    localStorage.setItem('todos', todoStrings);
+}
 
+//Aplicacion
 window.onload = () => {
-
+    render();
     const form = document.getElementById('todo-form'); //referencia al form
     form.onsubmit = (e) => { //reemplazamos la funcion en onsubmit
         e.preventDefault(); //prevenir que no refresque la pagina
@@ -50,8 +57,7 @@ window.onload = () => {
         const todoText = todo.value; // obtengo el valor
         todo.value = ''; // reemplazo el valor por un campo vacio
         todos.push(todoText);
-        const todoStrings = JSON.stringify(todos);
-        localStorage.setItem('todos', todoStrings);
+        actualizaTodos(todos);
         console.log(todoText);
         render();
     }
