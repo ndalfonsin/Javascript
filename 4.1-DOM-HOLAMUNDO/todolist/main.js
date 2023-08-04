@@ -1,4 +1,3 @@
-const todos = [];
 
 // window.onload = () => {
 //     const form = document.getElementById('todo-form'); //referencia al form
@@ -18,7 +17,7 @@ const todos = [];
 // }
 
 //simplificacion con .map
-
+const todos = localStorage.getItem('todos') || [];
 
 render = () => {
     const todoList = document.getElementById('todo-list');
@@ -43,6 +42,7 @@ render = () => {
 
 
 window.onload = () => {
+
     const form = document.getElementById('todo-form'); //referencia al form
     form.onsubmit = (e) => { //reemplazamos la funcion en onsubmit
         e.preventDefault(); //prevenir que no refresque la pagina
@@ -50,6 +50,8 @@ window.onload = () => {
         const todoText = todo.value; // obtengo el valor
         todo.value = ''; // reemplazo el valor por un campo vacio
         todos.push(todoText);
+        const todoStrings = JSON.stringify(todos);
+        localStorage.setItem('todos', todoStrings);
         console.log(todoText);
         render();
     }
