@@ -28,5 +28,7 @@ crea un package.json con:
   "license": "ISC"
 }
 
+2- Instalar express -> npm install -S express (para que quede guardado)
+Historial de las dependencias que se instalaron en el proyecto
 */
 
