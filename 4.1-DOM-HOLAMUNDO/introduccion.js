@@ -9,8 +9,10 @@ console.log(parrafo.innerHTML); // Intro a DOM
 
 window.onload = () => {}; //Para esperar que cargue el html antes de consultar el js
 
-parrafo.innerText = "Texto actualizado";
-parrafo.innerHTML = '<li>elemento</li>';
+parrafo.innerText = "Texto actualizado"; //ACTUALIZA SOLO EL TEXTO
+parrafo.innerHTML = '<li>elemento</li>'; //ACTUALIZA TODO EL ELEMENTO HTML 
+
+
 
 
 

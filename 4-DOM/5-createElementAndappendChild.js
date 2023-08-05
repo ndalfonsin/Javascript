@@ -20,7 +20,7 @@ console.log(li);
 const listaDinamica = document.querySelector("#listaDinamica");
 
 //crear el li
-const liHTML = docunent.createElement("li");
+const liHTML = document.createElement("li");
 
 // Agregando el texto al li
 li.textContent = "Item desde js";

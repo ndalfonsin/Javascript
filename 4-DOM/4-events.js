@@ -27,3 +27,5 @@ const parrafo = document.querySelector("#parrafo");
 boton.addEventListener("click", () => {
     parrafo.textContent = "Nuevo texto desde evento";
 });
+
+
