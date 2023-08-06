@@ -1,27 +1,22 @@
 const express = require('express');
+const user = require('./user.controller')
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-    res.status(200).send('Chanchito feliz') // 200 para devolver datos al cliente
+app.get("/", user.list) // 200 para devolver datos al cliente
+
+app.post("/", user.create)
+
+app.get('/:id', (req, res) => { //dato variable que va a aparecer en la ruta
+    console.log(req.params)
+    res.sendStatus(200).send(req.params) //solo vamos a hacer el envio del estado
 })
 
-app.post("/", (req, res) => {
-    res.status(201).send('Creando Chanchito') // 201 se creo exitosamente una entrada
-})
+app.put('/:id', user.update)
 
-app.put('/:id', (req, res) => { //dato variable que va a aparecer en la ruta
-    res.sendStatus(204) //solo vamos a hacer el envio del estado
-})
+app.patch('/:id', user.update)
 
-app.patch('/:id', (req, res) => { //dato variable que va a aparecer en la ruta
-    res.sendStatus(204) //solo vamos a hacer el envio del estado
-})
-
-app.delete('/:id', (req, res) => { //dato variable que va a aparecer en la ruta
-    res.sendStatus(204) //solo vamos a hacer el envio del estado
-})
-
+app.delete('/:id', user.destroy)
 /* vamos a saber a que metodo estamos apuntando cuando llamemos el fetch con el 
 method, especificando si es put, patch o delete */
 
