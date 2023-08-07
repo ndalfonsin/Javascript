@@ -38,6 +38,9 @@ const addFormListener = () => {
         // console.log(data) //objeto JSON
         
         //Crear usuarios
+
+        /* REVISAR A PARTIR DE ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
         await fetch('/users', {
             method: 'POST',
             body: JSON.stringify(data),
