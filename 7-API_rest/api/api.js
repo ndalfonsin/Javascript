@@ -2,9 +2,10 @@ const express = require('express');
 const user = require('./user.controller')
 const app = express();
 const port = 3000;
+app.use(express.json()) //middleware
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-app.use(express.json()) //middleware
+
 
 /*(req, res) => { user.get} */
 
@@ -13,8 +14,8 @@ mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@clus
 
 
 
-app.get("/users", user.list) // 200 para devolver datos al cliente
-app.post("/users", user.create)
+app.get('/users', user.list) // 200 para devolver datos al cliente
+app.post('/users', user.create)
 app.get('/users/:id', user.get)//dato variable que va a aparecer en la ruta
 app.put('/users/:id', user.update)
 app.patch('/users/:id', user.update)
