@@ -7,6 +7,14 @@ const Users = mongoose.model('User', {
 
 
 const User = {
+    get: async (req, res) => {
+        const { id } = req.params
+        const user = await Users.findOne({ _id: id })
+        if (!user) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+          }
+        res.status(200).send(user);
+    },
     list: async (req, res) => {
         const users = await Users.find()
         res.status(200).send(users);// 200 para devolver datos al cliente
@@ -15,7 +23,7 @@ const User = {
         // console.log(req.body) //para esto necesitamos ejecutar un middleware
         const user = new Users(req.body)
         const savedUser = await user.save()
-        res.status(201).send(savedUser._id);// 201 se creo exitosamente una entrada
+        res.status(201).send(savedUser._id)// 201 se creo exitosamente una entrada
     },
     update: async (req, res) => {
         const { id } = req.params
@@ -33,11 +41,6 @@ const User = {
         }
         res.status(204).send('Destruyendo');//solo vamos a hacer el envio del estado
     },
-    get: async (req, res) => {
-        const { id } = req.params
-        const user = await Users.findOne({ _id: id})
-        res.status(200).send(user);
-    }
 }
 
 module.exports = User //cuando exportemos este archivo en el app se nos creara el objeto User
