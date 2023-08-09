@@ -20,6 +20,8 @@ y solo vamos a sacar el nombre de usuario, buscarlo en la base de datos.
 si usuario existe, procede al login, si es que no existe, se crea un usuario.
 */
 
+const singToken = _id => jwt.sign({ _id}, process.env.STRINGTOKEN)
+
 app.post('/register', async (req, res) => {
     //obtenemos el cuerpo del request
     const { body } = req
@@ -39,7 +41,21 @@ app.post('/register', async (req, res) => {
         //asignacion de la contraseña al usuario
         const user = await User.create({ email: body.email, password: hashed, salt })
 
-        res.send({_id: user._id})
+        
+
+        /*
+            tomaremos un objeto {_id} y lo encriptaremos para que tenga 
+            un formato de jsonwebtoken. Se lo enviaremos al usuarios y lo
+            asignara en sus headers, de donde lo obtendremos para asignarle
+            el id desencriptado y buscarlo en la base de datos
+        */
+       
+       
+        //firmar nuestros jsonwebtoken
+        //const singed = jwt.sign({ _id: user._id}, '###secret###') //Esto debe estar oculto
+        
+        const singed = singToken(user._id)
+        res.status(201).send(singed)
 
     } catch (err) {
         console.log(err)
