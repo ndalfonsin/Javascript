@@ -41,24 +41,44 @@ app.post('/register', async (req, res) => {
         //asignacion de la contraseña al usuario
         const user = await User.create({ email: body.email, password: hashed, salt })
 
-        
-
         /*
             tomaremos un objeto {_id} y lo encriptaremos para que tenga 
             un formato de jsonwebtoken. Se lo enviaremos al usuarios y lo
             asignara en sus headers, de donde lo obtendremos para asignarle
             el id desencriptado y buscarlo en la base de datos
         */
-       
-       
+              
         //firmar nuestros jsonwebtoken
         //const singed = jwt.sign({ _id: user._id}, '###secret###') //Esto debe estar oculto
-        
         const singed = singToken(user._id)
         res.status(201).send(singed)
-
     } catch (err) {
         console.log(err)
+        res.status(500).send(err.message)
+    }
+})
+
+//Endpoint de inicio de sesion
+app.post('/login', async (req, res) => {
+    const { body } = req
+    try{
+        // Agarramos las credenciales de user y pass; la utilizamos para buscarlo en la base de datos. 
+        // Si no existe User y Pass incorrecto
+        // Si existe compararemos la pass de la peticion con la de la base de datos, Si es exitosa, devolvemos el jwt firmado
+
+        const user = await User.findOne({ email: body.email })
+        if (!user) {
+            res.status(403).send('Usuario y/o contraseña incorrectos.. Reintente')
+        } else {
+            const isMatch = await bcrypt.compare(body.password, user.password)
+            if (isMatch) {
+                const singed = singToken(user._id)
+                res.status(200).send(singed)
+            } else {
+                res.status(403).send('Usuario y/o contraseña incorrectos.. Reintente')
+            }
+        }
+    }catch(err){
         res.status(500).send(err.message)
     }
 })
@@ -66,4 +86,6 @@ app.post('/register', async (req, res) => {
 app.listen(3000, () => {
     console.log('Listening in port 3000');
 })
+
+
 
