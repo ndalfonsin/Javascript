@@ -74,3 +74,43 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # React Notes
 
+## Estructura de archivos
+
+### .git
+
+Contiene las configuraciones necesarias para que podamos gestionar nuestra aplicacion en un repositorio. 
+
+### Node_modules
+
+Contiene todas las dependencias necesarias para que podamos ejecutar nuestra aplicacion. 
+
+### Public 
+
+Se encuentran todos los archivos publicos para los usuarios. Ej index.html
+
+manifest.json => en este archivo se guardara toda la informacion relativa a la pagina, nombre corto y largo, iconos, start url, etc. 
+
+robots.txt => permite que nuestra pagina sea mas facil de indexar para los robots
+
+### Package-lock.json
+
+Contiene todas las dependencias que instalamos.
+
+### Package.json
+
+Contiene aun mas configuraciones de la aplicacion. 
+
+### SRC
+
+Los unicos dos archivos importantes para que una web funcione correctamente son ./src/index.js y ./public/index.html
+
+## Como se renderiza nuestra app en el DOM?
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+
+
+);
