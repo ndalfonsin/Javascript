@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 //EXPRESSJWT init
-const validateJwt = expressJwt({ secret: process.env.STRINGTOKEN, algorithms: ['HS256']})
+const validateJwt = expressJwt.expressjwt({ secret: process.env.STRINGTOKEN, algorithms: ['HS256']})
 
 
 /* Endpoint REGISTER -> vamos a recibir un objeto Json con "user" y "password"
@@ -25,7 +25,7 @@ y solo vamos a sacar el nombre de usuario, buscarlo en la base de datos.
 si usuario existe, procede al login, si es que no existe, se crea un usuario.
 */
 
-const singToken = _id => jwt.sign({ _id}, process.env.STRINGTOKEN)
+const signToken = _id => jwt.sign({ _id}, process.env.STRINGTOKEN)
 
 app.post('/register', async (req, res) => {
     //obtenemos el cuerpo del request
@@ -55,7 +55,7 @@ app.post('/register', async (req, res) => {
               
         //firmar nuestros jsonwebtoken
         //const singed = jwt.sign({ _id: user._id}, '###secret###') //Esto debe estar oculto
-        const singed = singToken(user._id)
+        const singed = signToken(user._id)
         res.status(201).send(singed)
     } catch (err) {
         console.log(err)
