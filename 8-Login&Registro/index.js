@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const expressJwt = require('express-jwt');
+const expressJwt = require('express-jwt'); //Utilizada para realizar validaciones del usuario
 const dotenv = require('dotenv');
 const User = require('./user')
 
@@ -14,6 +14,11 @@ const app = express()
 
 //indicamos que utilice el formato json para establecer conexiones con la api
 app.use(express.json());
+
+
+//EXPRESSJWT init
+const validateJwt = expressJwt({ secret: process.env.STRINGTOKEN, algorithms: ['HS256']})
+
 
 /* Endpoint REGISTER -> vamos a recibir un objeto Json con "user" y "password"
 y solo vamos a sacar el nombre de usuario, buscarlo en la base de datos.
@@ -83,6 +88,27 @@ app.post('/login', async (req, res) => {
     }
 })
 
+
+/* Middlewares
+En el contexto de Express.js, un middleware es una función que tiene acceso al objeto de solicitud (request),
+al objeto de respuesta (response) y a la siguiente función en el ciclo de solicitud-respuesta de la aplicación. 
+Los middlewares se utilizan para realizar diversas tareas como la validación de datos, la autenticación de usuarios, 
+el registro de solicitudes, la manipulación de encabezados y más. 
+Pueden ser encadenados juntos para formar un flujo de procesamiento.
+
+app.get('/middlewares', (req, res, next No olvidarse del next) => { //Flujo 1
+    req.user = {id: 'Jane'}
+    next()
+}, (req, res, next No olvidarse del next) => { //Flujo 2
+    console.log(req.user)
+    res.send('ok')
+})
+*/ 
+
+app.get('/middlewares', validateJwt , (req, res, next /*No olvidarse del next*/) => { //Flujo 2
+    console.log(req.user)
+    res.send('ok')
+})
 
 
 // LISTEN
