@@ -104,15 +104,73 @@ Contiene aun mas configuraciones de la aplicacion.
 
 Los unicos dos archivos importantes para que una web funcione correctamente son ./src/index.js y ./public/index.html
 
-## Como se renderiza nuestra app en el DOM?
+## Como se renderiza nuestra app en el DOM? Index.js
 
-    ./src/index.js
+Necesitamos especificar que contenido es el que queremos renderizar y en donde lo vamos a hacer (getElementById)
+
+
+    #./src/index.js
     
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>
             <App />
         </React.StrictMode>
+    );
+
+### reportWebVitals();
+
+Nos sirve para poder obtener todos los rendimientos de la pagina web y asi poder pasarselo a servicios como google analytics o herramientas que hayamos construido. 
+
+# Primeros pasos
+
+## Renderizar contenido sin utilizar jsx
+
+Podemos renderizar contenido sin la necesidad de usar jsx, cosa que no es recomendable, pero se haria de la siguiente forma: 
+    
+    #./src/index.js
+
+    const x = React.createElement('p', null, 'Hola mundo')
+    ReactDom.render(
+        x, document.getElementById('root')
+    )
+
+Tambien podriamos directamente colocar codigo jsx como parametro para el render
+
+    #./src/index.js
+
+    ReactDom.render(
+        <p>Hola mundo</p>, document.getElementById('root')
+    )
+
+Para hacer contenido dinamico, lo que podriamos hacer es pasar como parametro una arrow function
+
+    #./src/index.js
+
+    const x = () => <p>hola mundo</p>
+
+    ReactDom.render(
+        <X />, document.getElementById('root')
+    )
+
+## Pasar contenido dinamico al render
+
+    #./src/index.js
+
+    const Li = ({ children, estado}) =>
+        <li>{children} {estado}</li>
+
+    const X = () => 
+        <ul>
+            <Li apellido={'Doe'}>Jane</Li>
+        </ul>
+
+    ReactDom.render(
+        <X />, document.getElementById('root')
+    )
+
+El {children} se utiliza para pasarle el valor de la propiedad 'Nombre' del Li a los elementos hijos (li). Hace referencia a todos los elementos que les pasamos a nuestros componentes entre sus etiquetas. 
+
+Si le agregamos la propiedad estado (totalmente customizable) a nuestro Li, podemos pasarselo al componente Li mediante object destructuring y hacer uso de 'estado'
 
 
-);
